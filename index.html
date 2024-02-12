@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Inventory Management System</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pharmacy Inventory Management System</h1>
+        <form id="medicineForm">
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" required><br>
+            <!-- Other input fields here for Product ID, Manufacturer, Expiration Date, and Quantity -->
+            <button type="submit">Add Medicine</button>
+        </form>
+        <div id="error" class="error"></div>
+        <table id="medicineTable">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <!-- Add other table headers -->
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="medicineList">
+                <!-- Medicine records will be appended here dynamically -->
+            </tbody>
+        </table>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>
