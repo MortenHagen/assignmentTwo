@@ -1,5 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
+    
     class Medicine {
         constructor(name, id, manufacturer, expirationDate, quantity) {
             this.name = name;
@@ -67,7 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // Create popup container
             const popup = document.createElement('div');
             popup.classList.add('popup');
-            popup.innerHTML = popupContent;
+
+
+            const popupContainer = document.createElement('div')
+            popupContainer.classList.add('popup-content');
+            popupContainer.innerHTML = popupContent;
+            popup.appendChild(popupContainer)
 
             // Close popup when clicked outside
             const closePopup = () => {
