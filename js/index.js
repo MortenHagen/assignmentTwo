@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     class Medicine {
         constructor(name, id, manufacturer, expirationDate, quantity) {
             this.name = name;
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         displayMedicines() {
             const medicineList = document.getElementById('medicineList');
             medicineList.innerHTML = '';
-
+        
             this.medicines.forEach(medicine => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 medicineList.appendChild(row);
             });
         }
+        
 
         displayMedicineInfoPopup(medicine) {
             console.log("helloo");
@@ -63,15 +64,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div>Manufacturer: ${this.escapeHTML(medicine.manufacturer)}</div>
                 <div>Expiration Date: ${this.escapeHTML(medicine.expirationDate)}</div>
                 <div>Quantity: ${this.escapeHTML(medicine.quantity)}</div>
+                <td><button class="delete-btn" data-id="${medicine.id}">Delete</button></td>
             `;
 
             // Create popup container
             const popup = document.createElement('div');
             popup.classList.add('popup');
-
+            document.body.appendChild(popup);
 
             const popupContainer = document.createElement('div')
-            popupContainer.classList.add('popup-content');
+            popupContainer.classList.add('popup-container');
             popupContainer.innerHTML = popupContent;
             popup.appendChild(popupContainer)
 
@@ -81,19 +83,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.removeChild(popup);
 
             };
-        let clickCount = 0;
+            let clickCount = 0;
 
-        const clickHandler = (event) => {
-            clickCount++;
-            console.log(`being triggered (${clickCount} times)`);
-            if (popup.contains(event.target)) {
-                closePopup();
-            }
-        };
-
-
+            const clickHandler = (event) => {
+                clickCount++;
+                console.log(`being triggered (${clickCount} times)`);
+                if (popup.contains(event.target)) {
+                    closePopup();
+                }
+            };
             // Append popup to body
-            document.body.appendChild(popup);
 
             // Add click event listener to close the popup when clicked outside
             document.addEventListener('click', clickHandler);

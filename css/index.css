@@ -1,51 +1,48 @@
-/* Reset default margin and padding */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body styles */
 body {
+    position: relative;
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
-    padding: 20px;
 }
 
-/* Container styles */
 .container {
-    max-width: 80vw;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    max-width: max-content;
     margin: 0 auto;
-    background-color: #fff;
+    margin-top: 3rem;
+    background-color: #dbdbdb;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Form styles */
-.form-group {
-    margin-bottom: 20px; /* Increased margin for better separation */
+.container img{
+    background: white;
+    background-color: white;
+    height: 5rem;
+    margin: 0 auto;
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 8px; /* Reduced margin for a cleaner look */
-    font-weight: bold; /* Added bold font weight for labels */
-    color: #444; /* Darkened label color for better readability */
+    display: flex;
+    margin-top: 1rem;
+    font-weight: bold; 
+    color: #000000; 
 }
 
 .form-group input {
     width: 100%;
-    padding: 10px; /* Increased padding for better input field visibility */
-    border: 2px solid #ccc; /* Thicker border for input fields */
-    border-radius: 6px; /* Slightly rounded corners for input fields */
-    transition: border-color 0.3s ease; /* Smooth transition for border color */
-    font-size: 16px; /* Increased font size for better readability */
-}
-
-.form-group input[type="date"] {
-    appearance: none;
-    /* Additional styles for date input */
+    padding: 10px; 
+    border: 2px solid #ccc;
+    border-radius: 6px; 
+    transition: border-color 0.3s ease; 
 }
 
 .form-group input:focus {
@@ -54,25 +51,24 @@ body {
 
 .form-group button {
     padding: 12px 20px; /* Increased padding for button */
-    background-color: #007bff;
+    background-color: #0e8304;
     color: #fff;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 16px; /* Increased font size for better visibility */
+    font-size: 1.5rem; /* Increased font size for better visibility */
 }
 
 .form-group button:hover {
-    background-color: #0056b3;
+    background-color: #0fa502;
 }
 
 
 /* Table styles */
 table {
-    width: 100%;
+    width: 80%;
     border-collapse: collapse;
-    margin-top: 20px;
 }
 
 table th,
@@ -102,23 +98,26 @@ table td button:hover {
 }
 
 .popup {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+}
+
+.popup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 50%;
+    margin: 10% auto;
+    background-color: #2a6825;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 999; /* Ensure the popup is above other elements */
-    max-width: 300px; /* Adjust max width as needed */
-}
-
-.popup div {
-    margin-bottom: 10px;
-}
-
-.popup div:last-child {
-    margin-bottom: 0;
 }
