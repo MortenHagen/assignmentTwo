@@ -19,7 +19,7 @@ class PharmacyInventory {
             return storedMedicines;
         } catch (error) {
             console.error('Error loading medicines from storage:', error);
-            return [];
+            return [];  
         }
     }
 
@@ -36,24 +36,43 @@ class PharmacyInventory {
         this.medicines = this.medicines.filter(medicine => medicine.id !== id);
         this.saveMedicinesToStorage();
     }
+displayMedicines() {
+    const medicineList = document.getElementById('medicineList');
+    medicineList.innerHTML = '';
 
-    displayMedicines() {
-        const medicineList = document.getElementById('medicineList');
-        medicineList.innerHTML = '';
+    this.medicines.forEach(medicine => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${this.escapeHTML(medicine.name)}</td>
+            <td>${this.escapeHTML(medicine.manufacturer)}</td>
+        `;
+        row.addEventListener('click', () => this.displayMedicineInfoPopup(medicine));
+        medicineList.appendChild(row);
+    });
+}
 
-        this.medicines.forEach(medicine => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${this.escapeHTML(medicine.name)}</td>
-                <td>${this.escapeHTML(medicine.id)}</td>
-                <td>${this.escapeHTML(medicine.manufacturer)}</td>
-                <td>${this.escapeHTML(medicine.expirationDate)}</td>
-                <td>${this.escapeHTML(medicine.quantity)}</td>
-                <td><button data-id="${medicine.id}" class="delete-btn">Delete</button></td>
-            `;
-            medicineList.appendChild(row);
-        });
-    }
+displayMedicineInfoPopup(medicine) {
+    const popupContent = `
+        <div>Name: ${this.escapeHTML(medicine.name)}</div>
+        <div>ID: ${this.escapeHTML(medicine.id)}</div>
+        <div>Manufacturer: ${this.escapeHTML(medicine.manufacturer)}</div>
+        <div>Expiration Date: ${this.escapeHTML(medicine.expirationDate)}</div>
+        <div>Quantity: ${this.escapeHTML(medicine.quantity)}</div>
+    `;
+    // Create popup container
+    const popup = document.createElement('div');
+    popup.classList.add('popup');
+    popup.innerHTML = popupContent;
+
+    // Append popup to body
+    document.body.appendChild(popup);
+
+    // Close popup when clicked outside
+    popup.addEventListener('click', () => {
+        document.body.removeChild(popup);
+    });
+}
+
 
     escapeHTML(text) {
         const div = document.createElement('div');
