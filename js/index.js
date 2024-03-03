@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 		}
 
-	//Create the Popup and the logic within
+	// Create the Popup and the logic within
 		displayMedicineInfoPopup(medicine) {
 			const popupContent = `
 			<div>
